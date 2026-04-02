@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "pathFilters": [
+    "/src",
+    "/Directory.Packages.props",
+    ":!version.json"
+  ],
+  "publicReleaseRefSpec": [
+    "^refs/heads/main", // we release out of main
+    "^refs/tags/v\\d+\\.\\d+", // we also release tags starting with vN.N
+  ],
+  "nugetPackageVersion": {
+    "semVer": 2
+  },
+  "cloudBuild": {
+    "buildNumber": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<Project>
+  <!-- Common -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
+    <NoWarn>$(NoWarn);CS8509;IDE0039;IDE0130;IDE0290;IDE0060;RZ10012;IDE0052;BL0007;NU5128</NoWarn>
+    <WarningsAsErrors>$(WarningsAsErrors);RZ2012</WarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- Artifacts -->
+  <PropertyGroup>
+    <ArtifactsProjectPath>$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), $(MSBuildProjectDirectory)).Replace("$(MSBuildProjectName)", '').TrimEnd('/'))</ArtifactsProjectPath>
+    <ArtifactsPath>$([System.IO.Path]::Combine($(MSBuildThisFileDirectory), "artifacts", $(ArtifactsProjectPath)))</ArtifactsPath>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <NBGV_EmitThisAssemblyClass>true</NBGV_EmitThisAssemblyClass>
+    <GitVersionBaseDirectory>$(MSBuildThisFileDirectory)</GitVersionBaseDirectory>
+  </PropertyGroup>
+
+  <!-- Repository -->
+  <PropertyGroup>
+    <Authors>Heretic Software</Authors>
+    <Copyright>Copyright (c) $([System.DateTimeOffset]::UtcNow.ToString("yyyy")) $(Authors)</Copyright>
+    <OrganizationUrl>https://www.github.com/HereticSoftware</OrganizationUrl>
+    <RepositoryName></RepositoryUrl>
+    <RepositoryUrl>$(OrganizationUrl)/$(RepositoryName)</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryLicense>MIT</RepositoryLicense>
+    <RepositoryDescription></RepositoryDescription>
+    <RepositoryTags></RepositoryTags>
+  </PropertyGroup>
+
+  <!-- Package -->
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageLicenseExpression>$(RepositoryLicense)</PackageLicenseExpression>
+    <PackageDescription>$(RepositoryDescription)</PackageDescription>
+    <PackageTags>$(RepositoryTags)</PackageTags>
+    <PackageReleaseNotes>$(RepositoryUrl)/releases</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>Icon.png</PackageIcon>
+
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageOutputPath>$([System.IO.Path]::Combine($(MSBuildThisFileDirectory), "packages"))</PackageOutputPath>
+  </PropertyGroup>
+
+  <!-- Package -->
+  <ItemGroup Condition="'$(OutputType)' == 'Library' and $(IsPackable)">
+    <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="True" PackagePath="\" Visible="False" />
+    <None Include="$(MSBuildThisFileDirectory)\Icon.png" Pack="True" PackagePath="\" Visible="False" />
+  </ItemGroup>
+
+</Project>
