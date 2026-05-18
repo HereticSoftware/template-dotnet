@@ -28,7 +28,7 @@
     <Authors>Heretic Software</Authors>
     <Copyright>Copyright (c) $([System.DateTimeOffset]::UtcNow.ToString("yyyy")) $(Authors)</Copyright>
     <OrganizationUrl>https://www.github.com/HereticSoftware</OrganizationUrl>
-    <RepositoryName></RepositoryUrl>
+    <RepositoryName></RepositoryName>
     <RepositoryUrl>$(OrganizationUrl)/$(RepositoryName)</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryLicense>MIT</RepositoryLicense>
