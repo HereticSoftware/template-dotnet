@@ -17,16 +17,11 @@
     <UseArtifactsOutput>true</UseArtifactsOutput>
   </PropertyGroup>
 
-  <!-- Versioning -->
-  <PropertyGroup>
-    <NBGV_EmitThisAssemblyClass>true</NBGV_EmitThisAssemblyClass>
-    <GitVersionBaseDirectory>$(MSBuildThisFileDirectory)</GitVersionBaseDirectory>
-  </PropertyGroup>
-
   <!-- Repository -->
   <PropertyGroup>
     <Authors>Heretic Software</Authors>
-    <Copyright>Copyright (c) $([System.DateTimeOffset]::UtcNow.ToString("yyyy")) $(Authors)</Copyright>
+    <Year></Year>
+    <Copyright>Copyright (c) $(Year) $(Authors)</Copyright>
     <OrganizationUrl>https://www.github.com/HereticSoftware</OrganizationUrl>
     <RepositoryName></RepositoryName>
     <RepositoryUrl>$(OrganizationUrl)/$(RepositoryName)</RepositoryUrl>
@@ -58,5 +53,4 @@
     <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="True" PackagePath="\" Visible="False" />
     <None Include="$(MSBuildThisFileDirectory)\Icon.png" Pack="True" PackagePath="\" Visible="False" />
   </ItemGroup>
-
 </Project>

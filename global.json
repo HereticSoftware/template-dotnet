@@ -4,9 +4,6 @@
     "rollForward": "latestMinor",
     "allowPrerelease": false
   },
-  "msbuild-sdks": {
-    "Cake.Sdk": "6.1.1"
-  },
   "test": {
     "runner": "Microsoft.Testing.Platform"
   }

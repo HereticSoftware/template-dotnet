@@ -1,0 +1,13 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)..))" />
+
+  <ItemGroup>
+    <PackageReference Include="TUnit" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="TUnit" />
+    <Using Include="TUnit.Core" />
+  </ItemGroup>
+</Project>

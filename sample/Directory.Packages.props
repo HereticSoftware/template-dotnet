@@ -1,0 +1,10 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Packages.props, $(MSBuildThisFileDirectory)..))" />
+
+  <ItemGroup>
+    <PackageVersion Include="FluentValidation" Version="" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="" />
+    <PackageVersion Include="Scalar.AspNetCore" Version="" />
+  </ItemGroup>
+</Project>

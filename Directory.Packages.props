@@ -2,17 +2,10 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
-  <!-- Packagges -->
-  <ItemGroup>
-  </ItemGroup>
-  <!-- Testing -->
-  <ItemGroup>
-    <PackageVersion Include="TUnit" Version="" />
-    <PackageVersion Include="Verify.TUnit" Version="" />
-  </ItemGroup>
+
   <!-- Versioning & SourceLink -->
   <ItemGroup>
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="" />
-    <GlobalPackageReference Include="Nerdbank.GitVersioning" Version="" />
+    <GlobalPackageReference Include="MinVer" Version="" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,31 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props, $(MSBuildThisFileDirectory)..))" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TieredCompilation>true</TieredCompilation>
+    <Optimize>true</Optimize>
+    <Configuration>Release</Configuration>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="BenchmarkDotNet.Attributes" />
+    <Using Include="BenchmarkDotNet.Columns" />
+    <Using Include="BenchmarkDotNet.Configs" />
+    <Using Include="BenchmarkDotNet.Diagnosers" />
+    <Using Include="BenchmarkDotNet.Environments" />
+    <Using Include="BenchmarkDotNet.Jobs" />
+    <Using Include="BenchmarkDotNet.Loggers" />
+    <Using Include="BenchmarkDotNet.Order" />
+    <Using Include="BenchmarkDotNet.Reports" />
+    <Using Include="BenchmarkDotNet.Running" />
+  </ItemGroup>
+</Project>
