@@ -5,6 +5,7 @@
 
   <!-- Versioning & SourceLink -->
   <ItemGroup>
+    <GlobalPackageReference Include="ThisAssembly.AssemblyInfo" Version="" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="" />
     <GlobalPackageReference Include="MinVer" Version="" />
   </ItemGroup>
