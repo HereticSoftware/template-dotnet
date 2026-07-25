@@ -86,6 +86,8 @@
 *          text=auto
 
 *.cs       text diff=csharp
+*.razor    linguist-language=C#
+*.verified.cs text eol=lf working-tree-encoding=UTF-8
 *.cshtml   text diff=html
 *.csx      text diff=csharp
 *.sln      text eol=crlf
