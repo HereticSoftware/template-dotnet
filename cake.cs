@@ -53,8 +53,8 @@ var pullRequest = Task("Pull-Request")
     .IsDependentOn(test);
 
 var publish = Task("Publish")
-    .WithCriteria(!string.IsNullOrEmpty(nugetSource), "Environment variable `NUGET_API_KEY` was not provided")
-    .WithCriteria(!string.IsNullOrEmpty(nugetApiKey), "Environment variable `NUGET_SOURCE` was not provided")
+    .WithCriteria(() => !string.IsNullOrEmpty(nugetSource), "Environment variable `NUGET_API_KEY` was not provided")
+    .WithCriteria(() => !string.IsNullOrEmpty(nugetApiKey), "Environment variable `NUGET_SOURCE` was not provided")
     .IsDependentOn(build)
     .IsDependentOn(test)
     .IsDependentOn(pack)
