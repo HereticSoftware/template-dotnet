@@ -5,8 +5,9 @@
 
   <!-- Versioning & SourceLink -->
   <ItemGroup>
-    <GlobalPackageReference Include="ThisAssembly.AssemblyInfo" Version="" />
+    <GlobalPackageReference Include="DotNet.ReproducibleBuilds" Version="" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="" />
     <GlobalPackageReference Include="MinVer" Version="" />
+    <GlobalPackageReference Include="ThisAssembly.AssemblyInfo" Version="" />
   </ItemGroup>
 </Project>
