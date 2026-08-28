@@ -13,7 +13,7 @@
 
   <!-- Artifacts -->
   <PropertyGroup>
-    <ArtifactsProjectPath>$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), $(MSBuildProjectDirectory)).Replace("$(MSBuildProjectName)", '').TrimEnd('/'))</ArtifactsProjectPath>
+    <ArtifactsProjectPath>$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), $([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)'))))</ArtifactsProjectPath>
     <ArtifactsPath>$([System.IO.Path]::Combine($(MSBuildThisFileDirectory), "artifacts", $(ArtifactsProjectPath)))</ArtifactsPath>
     <UseArtifactsOutput>true</UseArtifactsOutput>
   </PropertyGroup>
