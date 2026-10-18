@@ -1,0 +1,22 @@
+{
+  "upstream": "https://github.com/HereticSoftware/template-dotnet.git",
+  "ref": "main",
+  "base": "",
+  "sync": [
+    ".agents/plugins/**",
+    ".agents/skills/**",
+    ".editorconfig",
+    ".gitattributes",
+    ".gitignore",
+    ".github/workflows/**",
+    "AGENTS.md",
+    "Directory.Build.props",
+    "Directory.Packages.props",
+    "*/Directory.Build.props",
+    "*/Directory.Packages.props",
+    "cake.cs",
+    "cake/**",
+    "global.json",
+    "renovate.json"
+  ]
+}
