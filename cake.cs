@@ -1,9 +1,8 @@
 #!
 #:sdk Cake.Sdk
+#:property IncludeAdditionalFiles=cake/**/*.cs
 
 var target = Argument<string>("target");
-var nugetApiKey = EnvironmentVariable("NUGET_API_KEY", string.Empty);
-var nugetSource = EnvironmentVariable("NUGET_SOURCE", string.Empty);
 
 var configuration = "Release";
 var version = ThisAssembly.Info.InformationalVersion;
@@ -52,17 +51,9 @@ var pullRequest = Task("Pull-Request")
     .IsDependentOn(build)
     .IsDependentOn(test);
 
-var publish = Task("Publish")
-    .WithCriteria(() => !string.IsNullOrEmpty(nugetSource), "Environment variable `NUGET_API_KEY` was not provided")
-    .WithCriteria(() => !string.IsNullOrEmpty(nugetApiKey), "Environment variable `NUGET_SOURCE` was not provided")
+var publish = AddPublishTask()
     .IsDependentOn(build)
     .IsDependentOn(test)
-    .IsDependentOn(pack)
-    .WithCriteria(() => GetFiles("packages/*.nupkg").Count != 0, "No packages were produced")
-    .Does(() =>
-    {
-        Information("NuGet Push");
-        DotNetNuGetPush("packages/*.nupkg", new() { Source = nugetSource, ApiKey = nugetApiKey });
-    });
+    .IsDependentOn(pack);
 
 RunTarget(target);
