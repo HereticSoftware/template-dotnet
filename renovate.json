@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "labels": ["dependencies"],
+  "automerge": true,
+  "packageRules": [
+    {
+      "matchFileNames": ["global.json"],
+      "addLabels": ["dotnet-sdk"]
+    },
+    {
+      "matchPackageNames": ["Microsoft.Extensions.*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["Microsoft.Extensions.*"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "Microsoft platform packages"
+    }
+  ]
+}

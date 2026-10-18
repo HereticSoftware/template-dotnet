@@ -56,4 +56,6 @@ var publish = AddPublishTask()
     .IsDependentOn(test)
     .IsDependentOn(pack);
 
+var renovate = AddRenovateTask();
+
 RunTarget(target);
