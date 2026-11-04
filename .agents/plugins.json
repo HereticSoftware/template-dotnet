@@ -1,0 +1,40 @@
+{
+  "plugins": [
+    {
+      "name": "dotnet-skills",
+      "type": "plugin",
+      "repo": "https://github.com/Aaronontheweb/dotnet-skills.git",
+      "ref": "master",
+      "install": {
+        "claude-code": [
+          "/plugin marketplace add Aaronontheweb/dotnet-skills",
+          "/plugin install dotnet-skills"
+        ],
+        "codex": [
+          "codex plugin marketplace add Aaronontheweb/dotnet-skills",
+          "codex plugin add dotnet-skills@dotnet-skills"
+        ]
+      },
+      "update": {
+        "claude-code": ["/plugin marketplace update"],
+        "codex": ["codex plugin marketplace upgrade"]
+      },
+      "paths": ["skills/*"]
+    },
+    {
+      "name": "roslynk",
+      "type": "skills",
+      "repo": "https://github.com/mrpmorris/Roslynk.git",
+      "ref": "master",
+      "paths": ["skills/roslynk"],
+      "requires": ["mcp:roslynk"]
+    },
+    {
+      "name": "pennington",
+      "type": "skills",
+      "repo": "https://github.com/usepennington/skills.git",
+      "ref": "main",
+      "paths": ["pennington"]
+    }
+  ]
+}

@@ -41,4 +41,4 @@ Three-way compare per managed file: base (template at the recorded commit), ours
    - exit above 0: conflicts. Do not write. Show the conflicting hunks and ask per file: keep ours, take theirs, or write with conflict markers for manual resolution. Default if unanswered: keep ours and list it as unresolved.
 6. **Version lines.** In `global.json` and `Directory.Packages.props`, a conflict that is only a version value: keep ours (Renovate owns versions), unless the user says otherwise.
 7. **Bump `base`** to THEIRS only if every file ended resolved (applied, merged, or the user chose to keep ours). If any file was deferred, leave `base` unchanged; re-running is safe because already-applied files compare as equal.
-8. **Clean up** the temp dir. Report in four lists: applied, merged cleanly, kept (ours), unresolved. If this run changed `.agents/skills/template-sync`, say so.
+8. **Clean up** the temp dir. Report in four lists: applied, merged cleanly, kept (ours), unresolved. If this run changed `.agents/skills/template-sync`, say so. If it changed `.agents/plugins.json` or `.agents/mcp.json`, offer to run `.agents/skills/tools-sync/SKILL.md` to apply them.

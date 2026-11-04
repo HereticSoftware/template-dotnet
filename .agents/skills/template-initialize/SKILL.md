@@ -35,4 +35,5 @@ Fills placeholders with the user's answers and current versions, then records th
 6. **Workflows.** List what `.github/workflows/*` needs from the user and do not set it: secrets (for example `NUGET_USER`), and any `uses:` pointing at another organization's repo or action.
 7. **Record the base.** Set `base` in `.agents/template.json` to `git ls-remote <upstream> <ref>` (the commit hash). If the repo was copied from an older template state, ask which tag or commit it started from and use that.
 8. **Verify.** Run `dotnet restore` (or the repo's Cake `Restore` target) and report the result. Do not hide failures.
-9. **Report.** List files changed and values chosen. Suggest `git add` and a commit; do not run them without being asked.
+9. **Agent tools.** Offer to run `.agents/skills/tools-sync/SKILL.md` now to install the plugins, skills and MCP servers in `.agents/plugins.json` and `.agents/mcp.json`. Skip if declined.
+10. **Report.** List files changed and values chosen. Suggest `git add` and a commit; do not run them without being asked.

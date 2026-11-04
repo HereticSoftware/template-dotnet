@@ -3,7 +3,8 @@
   "ref": "main",
   "base": "",
   "sync": [
-    ".agents/plugins/**",
+    ".agents/mcp.json",
+    ".agents/plugins.json",
     ".agents/skills/**",
     ".editorconfig",
     ".gitattributes",

@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "roslynk": {
+      "command": "roslynk",
+      "args": ["stdio"],
+      "install": "dotnet tool install roslynk -g",
+      "update": "dotnet tool update roslynk -g",
+      "requires": ".NET 10 SDK on PATH",
+      "docs": "https://github.com/mrpmorris/Roslynk"
+    }
+  }
+}

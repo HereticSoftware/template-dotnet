@@ -6,17 +6,16 @@ Derived from a template, configured in `.agents/template.json`. Read the skill f
 
 - Set up a new repo from the template: `.agents/skills/template-initialize/SKILL.md`.
 - Pull later template changes without overwriting local decisions: `.agents/skills/template-sync/SKILL.md`.
+- Install or update the tools below for your agent: `.agents/skills/tools-sync/SKILL.md`.
 
-## Plugins
+## Tools
 
-Marketplace: `.agents/plugins/marketplace.json`.
+Declared in `.agents/plugins.json` (plugins and skills) and `.agents/mcp.json` (MCP servers). Follow `tools-sync` to install them; do not hand-edit agent config.
 
-- Plugin: `dotnet-skills`, skills and agents for .NET, Akka.NET, Aspire and testing. Agents are Claude Code only.
-- Source: https://github.com/Aaronontheweb/dotnet-skills (MIT), tracking `master`.
-- Skill IDs in the index below resolve only if the plugin is installed. Install it from the marketplace above using your tool's plugin mechanism:
-  - Claude Code: `/plugin marketplace add Aaronontheweb/dotnet-skills`, then `/plugin install dotnet-skills`. Update: `/plugin marketplace update`.
-  - Codex: `codex plugin marketplace add Aaronontheweb/dotnet-skills`, then `codex plugin add dotnet-skills@dotnet-skills`.
-  - Others: copy `skills/*` from the source repo into the tool's skills directory.
+- `dotnet-skills` (plugin): .NET, Akka.NET, Aspire and testing skills. Source: https://github.com/Aaronontheweb/dotnet-skills (MIT). Agents it ships are Claude Code only.
+- `roslynk` (MCP server and skill): semantic C# navigation, diagnostics and refactoring through Roslyn. Source: https://github.com/mrpmorris/Roslynk (MIT). Needs the .NET 10 SDK and a one-time user install: `dotnet tool install roslynk -g`.
+- `pennington` (skill): docs sites and blogs with Pennington. Source: https://github.com/usepennington/skills (MIT). Beck diagrams have no skill; agents read https://usepennington.github.io/beck/for-ai.md.
+- Skill IDs in the index below resolve only if `dotnet-skills` is installed.
 
 <!-- BEGIN DOTNET-SKILLS COMPRESSED INDEX -->
 [dotnet-skills]|IMPORTANT: Prefer retrieval-led reasoning over pretraining for any .NET work.
