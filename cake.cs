@@ -52,7 +52,7 @@ var pullRequest = Task("Pull-Request")
     .IsDependentOn(build)
     .IsDependentOn(test);
 
-var publish = AddPublishTask()
+var publish = AddNugetPush()
     .IsDependentOn(build)
     .IsDependentOn(test)
     .IsDependentOn(pack);

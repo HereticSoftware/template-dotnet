@@ -7,7 +7,7 @@ public static partial class Program
     /// Skipped if source or key is missing, or <paramref name="packages"/> matches no files.
     /// Dependencies (build, test, pack) are added by the caller via <c>IsDependentOn</c>.
     /// </summary>
-    public static CakeTaskBuilder AddPublishTask(string name = "Publish", string packages = "packages/*.nupkg")
+    public static CakeTaskBuilder AddNugetPush(string name = "Nuget-Push", string packages = "packages/*.nupkg")
     {
         var source = Argument<string>("nuget-source", EnvironmentVariable("NUGET_SOURCE", string.Empty));
         var apiKey = EnvironmentVariable("NUGET_API_KEY", string.Empty);
