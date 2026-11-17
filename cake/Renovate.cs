@@ -12,6 +12,7 @@ public static class RenovateExtensions
     /// <paramref name="dryRun"/>: <c>--platform=local</c>, no PRs, no token, works without a Renovate config
     /// (<c>--onboarding=false --require-config=optional</c>, avoids the onboarding flow). Sets <c>LOG_LEVEL=debug</c> unless already set,
     /// since proposed updates are only logged at debug level.
+    /// Killed if the Cake process exits (.NET 11 <c>KillOnParentExit</c>).
     /// Throws on non-zero exit code.
     /// </summary>
     public static void Renovate(this ICakeContext context, string repository, string platform, bool dryRun)
@@ -29,7 +30,7 @@ public static class RenovateExtensions
         var npxName = context.Environment.Platform.Family == PlatformFamily.Windows ? "npx.cmd" : "npx";
         var npx = context.Tools.Resolve(npxName) ?? throw new CakeException($"`{npxName}` was not found on PATH");
         context.Information("{0} {1}", npx.GetFilename(), args.RenderSafe());
-        var settings = new ProcessSettings { Arguments = args };
+        var settings = new ProcessSettings { Arguments = args, KillOnParentExit = true };
         if (dryRun && string.IsNullOrEmpty(context.EnvironmentVariable("LOG_LEVEL", string.Empty)))
         {
             settings.EnvironmentVariables = new Dictionary<string, string> { ["LOG_LEVEL"] = "debug" };

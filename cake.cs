@@ -1,5 +1,6 @@
 #!
 #:sdk Cake.Sdk
+#:property TargetFramework=net11.0
 #:property IncludeAdditionalFiles=cake/**/*.cs
 
 var target = Argument<string>("target");
