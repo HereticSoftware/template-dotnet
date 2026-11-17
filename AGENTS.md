@@ -4,8 +4,7 @@
 
 Derived from a template, configured in `.agents/template.json`. Read the skill file and follow it:
 
-- Set up a new repo from the template: `.agents/skills/template-initialize/SKILL.md`.
-- Pull later template changes without overwriting local decisions: `.agents/skills/template-sync/SKILL.md`.
+- Set up a new repo from the template, or pull later template changes without overwriting local decisions: `.agents/skills/template-apply/SKILL.md`.
 - Install or update the tools below for your agent: `.agents/skills/tools-sync/SKILL.md`.
 
 ## Tools

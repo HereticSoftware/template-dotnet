@@ -1,6 +1,6 @@
 ---
 name: tools-sync
-description: Install or update the plugins, skills and MCP servers this repo declares in `.agents/plugins.json` and `.agents/mcp.json`, in the way your own agent supports. Use during repo setup, after template-sync changed those files, or when asked to install, update or check the repo's agent tools, plugins, skills or MCP servers.
+description: Install or update the plugins, skills and MCP servers this repo declares in `.agents/plugins.json` and `.agents/mcp.json`, in the way your own agent supports. Use during repo setup, after template-apply changed those files, or when asked to install, update or check the repo's agent tools, plugins, skills or MCP servers.
 ---
 
 # Tools sync
