@@ -1,0 +1,21 @@
+name: Renovate
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 6 1 * *
+permissions:
+  contents: read
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Renovate
+        uses: HereticSoftware/actions/renovate@
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN || github.token }}
+          project-url: ${{ vars.DEPENDENCIES_PROJECT_URL }}
+          project-token: ${{ secrets.PROJECT_TOKEN }}

@@ -50,10 +50,11 @@ Mode: `base` empty is **init** (first run on a new repo); otherwise **update**. 
 6. **Merge.** Write base and theirs blobs to temp files with `git -C <tmp> show <sha>:<file>`. Write ours normalized: `id=$(git hash-object -w --path=<file> -- <file>)` then `git cat-file blob $id`. Run `git merge-file -p <ours> <base> <theirs>`:
    - exit 0: clean merge, write the output to the file.
    - exit above 0: conflicts. Do not write. Show the conflicting hunks and ask per file: keep ours, take theirs, or write with conflict markers for manual resolution. Default if unanswered: keep ours and list it as unresolved.
-7. **Version conflicts.** In `global.json` and `Directory.Packages.props`, a conflict that is only a version value: keep ours (Renovate owns versions), unless the user says otherwise.
-8. **Resolve empty versions** (both modes; the template keeps versions empty, so merges can bring new ones). Find every `Version=""` in `Directory.Packages.props` files and empty `sdk.version` / `msbuild-sdks.*` in `global.json`. For each:
+7. **Version conflicts.** In `global.json` and `Directory.Packages.props`, a conflict that is only a version value: keep ours (Renovate owns versions), unless the user says otherwise. In `.github/workflows/*`, a conflict that is only a `uses:` ref: take theirs; step 8 resolves it.
+8. **Resolve empty versions** (both modes; the template keeps versions and action refs empty, so merges can bring new ones). Find every `Version=""` in `Directory.Packages.props` files and empty `sdk.version` / `msbuild-sdks.*` in `global.json`. For each:
    - NuGet package or MSBuild SDK: `GET https://api.nuget.org/v3-flatcontainer/<lowercase-id>/index.json`, take the highest version without a `-` suffix.
    - .NET SDK: highest stable from `dotnet --list-sdks` as the default; also show the latest stable from `https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json` (`latest-sdk` of the newest supported channel). Ask which to pin. The pinned SDK must be installed locally.
+   - GitHub action: every `uses: <owner>/<repo>[/<path>]@` with an empty ref in THEIRS's `.github/workflows/*`. Re-resolve on every run, also when ours already pins a ref. `git ls-remote --tags https://github.com/<owner>/<repo>`: highest `vX.Y.Z` tag without a `-` suffix, written as `@<commit sha> # <tag>` (the `^{}` line's sha for annotated tags). No such tag: `@<sha>` of `git ls-remote <url> HEAD`.
    - Show a table (item, version, source) and get confirmation before writing.
 9. *init* **Referenced files.** `Directory.Build.props` packs `README.md` and `Icon.png` from the repo root.
    - Missing `README.md`: create a stub with the repository name as title and the description.
