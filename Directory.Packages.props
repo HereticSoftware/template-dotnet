@@ -4,7 +4,7 @@
   </PropertyGroup>
 
   <!-- Versioning & SourceLink -->
-  <ItemGroup>
+  <ItemGroup Condition="'$(UsingMicrosoftTraversalSdk)' != 'true'">
     <GlobalPackageReference Include="DotNet.ReproducibleBuilds" Version="" />
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="" />
     <GlobalPackageReference Include="MinVer" Version="" />
